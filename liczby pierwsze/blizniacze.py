@@ -1,8 +1,7 @@
-#Nie dokończone (przedzial [a, b])
-
-def eratostenes(n):
-    sieve = [True for _ in range(n+1)]
-    sieve[0] = sieve[1] = False
+def eratostenes(a, n):
+    sieve = [True] * (n+1-a)
+    if a > n:
+        print("Wykryto błąd. a musi byc mniejsze od b.")
     primes = []
     for i in range(len(sieve)):
         if i <= 1:
@@ -11,14 +10,15 @@ def eratostenes(n):
             primes.append(i)
             for j in range(i, len(sieve), i):
                 sieve[j] = False
-
     return primes
 
-#print("Badane liczby z przedzialu [a, b]; a < b; a, b naleza do przedzialu [2, 10^6]")
-n = int(input("Podaj n: "))
+
+# print("Badane liczby z przedzialu [a, b]; a < b; a, b naleza do przedzialu [2, 10^6]")
+a = int(input("Podaj a:"))
+b = int(input("Podaj b: "))
 
 
-liczby_pierwsze = eratostenes(n)
+liczby_pierwsze = eratostenes(a, b)
 
 liczby_blizniacze = []
 
